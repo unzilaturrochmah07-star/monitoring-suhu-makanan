@@ -172,9 +172,19 @@ Program juga memiliki fungsi pembacaan data dan pengecekan status suhu.
 
 \section{Konsep OOP}
 
-Walaupun Rust bukan bahasa pemrograman OOP murni seperti Java atau C++, Rust tetap memiliki konsep yang mendukung Object Oriented Programming.
+Walaupun Rust bukan bahasa pemrograman Object Oriented Programming (OOP) murni seperti Java atau C++, Rust tetap mendukung konsep OOP melalui penggunaan struct, impl, dan method.
 
-Pada project ini konsep OOP diterapkan melalui penggunaan struct.
+Pada project sistem monitoring suhu industri ini digunakan beberapa objek utama yaitu:
+
+\begin{itemize}
+    \item Sensor
+    \item MonitoringData
+    \item MonitoringSystem
+\end{itemize}
+
+\subsection{Struct Sensor}
+
+Struct Sensor digunakan untuk menyimpan informasi sensor suhu seperti nama sensor dan nilai suhu yang terbaca.
 
 \begin{verbatim}
 struct SensorData {
@@ -219,6 +229,14 @@ Contoh output program:
 
 Monitoring selesai.
 \end{verbatim}
+
+\subsection{Foto Hasil Percobaan}
+
+Berikut merupakan hasil percobaan program monitoring suhu pada terminal.
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{gambarperc.jpeg}
+\end{center}
 
 Berdasarkan pengujian tersebut:
 
