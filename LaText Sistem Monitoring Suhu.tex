@@ -1,0 +1,256 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage[indonesian]{babel}
+
+\begin{document}
+
+%==================== COVER ====================%
+
+\begin{titlepage}
+\centering
+
+\vspace*{1cm}
+
+{\Large \textbf{EVALUASI TENGAH SEMESTER (ETS)}}\\[0.5cm]
+
+{\Large \textbf{ALGORITMA PEMROGRAMAN}}\\[1.5cm]
+
+{\large
+SISTEM MONITORING SUHU TANGKI\\
+PADA INDUSTRI MAKANAN
+}\\[2cm]
+
+\includegraphics[width=5cm]{logoits.png}\\[1cm]
+
+{\large
+Dosen Pengampu:\\
+Ahmad Radhy, S.Si., M.Si
+}\\[1cm]
+
+{\large
+Mata Kuliah:\\
+Algoritma Pemrograman
+}\\[1cm]
+
+{\large
+Disusun Oleh:
+}\\[0.5cm]
+
+\begin{tabular}{ll}
+Tia Puspita Rini Hernawan & NRP 2042251085 \\
+Unzilatur Rochmah & NRP 2042251114 \\
+\end{tabular}
+
+\vfill
+
+{\large
+PROGRAM STUDI D4 TEKNOLOGI REKAYASA INSTRUMENTASI\\
+DEPARTEMEN TEKNIK INSTRUMENTASI\\
+FAKULTAS VOKASI\\
+INSTITUT TEKNOLOGI SEPULUH NOPEMBER\\
+2026
+}
+
+\end{titlepage}
+
+%==================== DAFTAR ISI ====================%
+
+\tableofcontents
+\newpage
+
+%==================== PENDAHULUAN ====================%
+
+\section{Pendahuluan}
+
+Perkembangan teknologi pada bidang industri makanan semakin meningkat, terutama pada sistem pengawasan kualitas produk. Salah satu parameter penting dalam industri makanan adalah suhu penyimpanan dan proses produksi. Suhu yang tidak stabil dapat menyebabkan kerusakan produk, menurunkan kualitas makanan, hingga menyebabkan pertumbuhan bakteri yang berbahaya.
+
+Pada industri makanan, monitoring suhu secara real-time sangat diperlukan agar kondisi penyimpanan tetap berada pada rentang aman. Sistem monitoring suhu memungkinkan operator mengetahui perubahan suhu secara cepat sehingga tindakan dapat segera dilakukan apabila terjadi kenaikan atau penurunan suhu yang tidak normal.
+
+Dalam project ini dibuat sebuah sistem monitoring suhu menggunakan bahasa pemrograman Rust. Sistem bekerja dengan membaca data suhu dari file simulasi sensor kemudian menampilkan informasi suhu secara real-time pada terminal. Selain menampilkan suhu, sistem juga memberikan status kondisi suhu seperti NORMAL, WARNING, dan CRITICAL.
+
+Bahasa Rust dipilih karena memiliki performa yang tinggi, efisien dalam penggunaan memori, serta memiliki sistem keamanan memori yang baik.
+
+%==================== TUJUAN ====================%
+
+\section{Tujuan}
+
+Tujuan dari pembuatan projek ini adalah:
+
+\begin{itemize}
+    \item Membuat sistem monitoring suhu sederhana menggunakan Rust.
+    \item Menampilkan data suhu secara real-time.
+    \item Mengelompokkan kondisi suhu berdasarkan kategori tertentu.
+    \item Mensimulasikan sistem monitoring industri makanan.
+    \item Menjadi dasar pengembangan sistem monitoring berbasis sensor asli di masa mendatang.
+\end{itemize}
+
+%==================== STUDI KASUS ====================%
+
+\section{Studi Kasus Instrumentasi}
+
+Pada industri makanan, suhu merupakan parameter penting yang harus dikontrol secara terus menerus. Contohnya pada ruang pendingin makanan beku, suhu harus dijaga agar tetap stabil untuk mempertahankan kualitas produk dan mencegah kerusakan.
+
+Apabila suhu terlalu tinggi, makanan dapat cepat rusak dan menimbulkan pertumbuhan bakteri. Sebaliknya, apabila suhu terlalu rendah, beberapa produk dapat mengalami perubahan tekstur dan kualitas.
+
+Oleh karena itu diperlukan suatu sistem monitoring suhu yang mampu:
+
+\begin{itemize}
+    \item Membaca kondisi suhu secara berkala.
+    \item Memberikan informasi kondisi suhu.
+    \item Memberikan peringatan apabila suhu berada di luar batas aman.
+    \item Menampilkan data secara real-time.
+\end{itemize}
+
+Pada project ini, data suhu masih menggunakan simulasi berupa file CSV bernama:
+
+\begin{verbatim}
+sensor_log.csv
+\end{verbatim}
+
+Contoh isi data:
+
+\begin{verbatim}
+08:00,2.5
+08:01,3.0
+08:02,5.5
+08:03,9.0
+\end{verbatim}
+
+%==================== ALGORITMA DAN FLOWCHART ====================%
+
+\section{Algoritma dan Flowchart}
+
+\subsection{Algoritma Program}
+
+Algoritma sistem monitoring suhu yang dibuat adalah sebagai berikut:
+
+\begin{enumerate}
+    \item Program dijalankan.
+    \item Program membaca file sensor log CSV.
+    \item Data suhu diparsing menjadi timestamp dan nilai suhu.
+    \item Sistem mengecek kondisi suhu.
+    \item Sistem menentukan status suhu.
+    \item Data ditampilkan pada terminal.
+    \item Program memberikan delay beberapa milidetik.
+    \item Program melanjutkan pembacaan data berikutnya.
+    \item Program selesai.
+\end{enumerate}
+
+\subsection{Flowchart}
+
+Berikut merupakan flowchart sistem monitoring suhu.
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{gambar.png}
+\end{center}
+
+%==================== PENJELASAN PROGRAM ====================%
+
+\section{Penjelasan Program Rust}
+
+Program menggunakan beberapa library bawaan Rust seperti File, BufReader, thread, dan Duration.
+
+Struct digunakan untuk menyimpan data sensor berupa timestamp dan nilai suhu.
+
+Berikut contoh struct yang digunakan:
+
+\begin{verbatim}
+struct SensorData {
+    timestamp: String,
+    suhu: f32,
+}
+\end{verbatim}
+
+Program juga memiliki fungsi pembacaan data dan pengecekan status suhu.
+
+%==================== KONSEP OOP ====================%
+
+\section{Konsep OOP}
+
+Walaupun Rust bukan bahasa pemrograman OOP murni seperti Java atau C++, Rust tetap memiliki konsep yang mendukung Object Oriented Programming.
+
+Pada project ini konsep OOP diterapkan melalui penggunaan struct.
+
+\begin{verbatim}
+struct SensorData {
+    timestamp: String,
+    suhu: f32,
+}
+\end{verbatim}
+
+Struct tersebut digunakan sebagai representasi objek sensor yang memiliki waktu pengukuran dan nilai suhu.
+
+%==================== IMPLEMENTASI NUMERIK ====================%
+
+\section{Implementasi Komputasi Numerik}
+
+Pada project ini implementasi komputasi numerik digunakan dalam proses pengolahan data suhu.
+
+Contoh proses parsing data suhu:
+
+\begin{verbatim}
+let suhu = parts[1].trim().parse::<f32>().unwrap_or(0.0);
+\end{verbatim}
+
+Program kemudian melakukan perbandingan nilai suhu untuk menentukan status kondisi suhu.
+
+%==================== HASIL PENGUJIAN ====================%
+
+\section{Hasil Pengujian}
+
+Pengujian dilakukan menggunakan file CSV yang berisi beberapa data suhu.
+
+Contoh output program:
+
+\begin{verbatim}
+==============================
+ SISTEM MONITORING SUHU
+==============================
+
+[08:00] Suhu: 2.50 C | Status: NORMAL
+[08:01] Suhu: 3.20 C | Status: NORMAL
+[08:02] Suhu: 5.50 C | Status: WARNING
+[08:03] Suhu: 9.00 C | Status: CRITICAL
+
+Monitoring selesai.
+\end{verbatim}
+
+Berdasarkan pengujian tersebut:
+
+\begin{itemize}
+    \item Sistem berhasil membaca data dari file CSV.
+    \item Sistem berhasil menampilkan data secara bertahap.
+    \item Sistem berhasil mengklasifikasikan status suhu.
+    \item Delay monitoring berjalan dengan baik.
+\end{itemize}
+
+%==================== ANALISIS HASIL ====================%
+
+\section{Analisis Hasil}
+
+Dari hasil pengujian dapat diketahui bahwa program monitoring suhu berhasil bekerja sesuai tujuan. Sistem mampu membaca data suhu dari file simulasi dan menampilkan informasi suhu secara real-time.
+
+Penggunaan Rust memberikan performa yang cukup baik dalam pengolahan data. Selain itu struktur program menjadi lebih aman dan terorganisir.
+
+Sistem klasifikasi suhu juga berjalan dengan baik. Program mampu membedakan kondisi NORMAL, WARNING, dan CRITICAL berdasarkan nilai suhu yang telah ditentukan.
+
+%==================== KESIMPULAN ====================%
+
+\section{Kesimpulan}
+
+Berdasarkan hasil perancangan dan pengujian sistem monitoring suhu industri makanan menggunakan bahasa Rust, dapat disimpulkan bahwa:
+
+\begin{itemize}
+    \item Sistem berhasil membaca data suhu dari file CSV.
+    \item Sistem mampu menampilkan monitoring suhu secara real-time.
+    \item Program berhasil mengklasifikasikan kondisi suhu.
+    \item Bahasa Rust dapat digunakan untuk pengembangan sistem monitoring industri.
+    \item Sistem masih berupa simulasi namun dapat dikembangkan menjadi sistem monitoring berbasis sensor asli.
+\end{itemize}
+
+\end{document}
